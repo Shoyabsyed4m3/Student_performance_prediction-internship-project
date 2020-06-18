@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Internship Project</title>
+
+    <style>
+        body{
+            background-color: blueviolet;
+        }
+        .middle{
+            height: 15cm;
+            width: 10cm;
+            border: 0.01cm green solid;
+            margin: 0 auto;
+            margin-top: 1.5cm;
+            background-color: tomato;
+            outline-offset: 1cm;
+        }
+        .middle{
+            font-weight: bold;
+            border-radius: 50px;
+        }
+        input[type=submit]{
+            background-color:blueviolet
+        }
+        input[type=text]{
+            text-align: center;
+        }
+        input[type=submit]:hover{
+            cursor: pointer;
+            background-color:cyan;
+            color: darkblue;
+        }
+        h1{
+            text-align: center;
+            margin-top: 1cm;
+            font-size: 12mm;
+            font-weight: bolder;
+            color:gold
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>student performance prediction</h1>
+    <div class="middle">
+
+        {% csrf_token %}
+        <form action="cal" method="POST">
+            {% csrf_token %}
+            <br><br>
+            &emsp;Enter Name :&emsp;&emsp;&emsp;&emsp;
+            <input style="border: none;border-radius: 10px;background-color: cyan;" type="text" name="name" id="">
+            <br>
+            <br><br><br>
+            &emsp;Enter 1st sem marks :&ensp;
+            <input style="border: none;border-radius: 10px;background-color: cyan;" type="text" name="first" id="">
+            <br>
+            <br><br><br>
+            &emsp;Enter 2nd sem marks :&ensp;
+            <input style="border: none;border-radius: 10px;background-color: cyan;" type="text" name="second" id="">
+            <br>
+            <br><br><br>
+            &emsp;Enter 3rd sem marks :&ensp;
+            <input style="border: none;border-radius: 10px;background-color: cyan;" type="text" name="third" id="">
+            <br>
+            <br><br><br>
+            &emsp;Enter 4th sem marks :&ensp;
+            <input style="border: none;border-radius: 10px;background-color: cyan;" type="text" name="fourth" id="">
+
+            
+             <input style="margin: 2cm 0cm;height: 1cm;text-transform: uppercase;font-size: 5mm;font-weight: bold;width: 90%;border-radius: 50px;margin-left: 5%;" value="Predict your result" type="submit" >
+        </form>
+
+        {{result}}
+
+    </div>
+    
+</body>
+</html>
