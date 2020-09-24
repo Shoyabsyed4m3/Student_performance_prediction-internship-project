@@ -3,7 +3,6 @@ from django.shortcuts import render
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 def index(request):
@@ -30,40 +29,12 @@ def performance(request):
     return render(request,'result.html',{'result':ans,'names':name,'status':status})
 
 def ml(name,first,second,third,fourth):
-    
-
-
-    df = pd.DataFrame({"name": ["shoyab", "harish", "faizan", "nivas", "reddy", "anil", "ganesh", "kishore", name],
-                    "1st-sem": [7.5, 3.2, 6.2, 8.5, 7.4, 7.5, 4.2, 9.2, first],
-                    "2nd-sem": [7.6, 3.1, 5.9, 8.3, 7.4, 8.5, 4.5, 9.5, second],
-                    "3rd-sem": [8.2, 2.9, 5.6, 8.8, 8.4, 7.9, 3.8, 9.0, third],
-                    "4th-sem": [7.9, 3.4, 6.4, 8.2, 7.4, 8.5, 4.8, 9.1, fourth]})
-
-
-    train = df.head(9)
-    #im taking test data and trained data same
-
+    df = pd.read_csv('studentsdata.csv')
     regr = linear_model.LinearRegression()
-    x = np.array(train[["1st-sem", "2nd-sem", "3rd-sem"]])
-    y = np.array(train[['2nd-sem']])
+    x = np.array(df[["1st-sem", "2nd-sem", "3rd-sem",'4th-sem']])
+    y = np.array(df['5th-sem'])
     regr.fit(x, y)
-
-
-    y_hat = regr.predict(train[["1st-sem", "2nd-sem", "3rd-sem"]])
-
-
-    l = y_hat.tolist()
-    pre = []
-    for i in l:
-        pre.append(i[0])
-    j = 0
-
-    accuracy = []
-    for i in df["4th-sem"]:
-        accuracy.append(round(((i-pre[j])/i)*100, 5))
-        j += 1
-
-    result = pre[-1]
-    return result
+    predicted = regr.predict([[first],[second],[third],[fourth]])
+    return predicted
 
     
