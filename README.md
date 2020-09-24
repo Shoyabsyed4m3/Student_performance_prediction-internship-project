@@ -15,3 +15,5 @@ I used Django framework to design a user Interface to predict the performance ea
 5.django
 <br/>
 website link : http://shoyabsyed4m3.pythonanywhere.com/
+<br/>
+<img src='images/certificate.pdf>
