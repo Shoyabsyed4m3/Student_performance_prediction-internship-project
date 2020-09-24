@@ -16,4 +16,4 @@ I used Django framework to design a user Interface to predict the performance ea
 <br/>
 website link : http://shoyabsyed4m3.pythonanywhere.com/
 <br/>
-<img src='certificate.jpg'>
+<img src='cert.jpg'>
